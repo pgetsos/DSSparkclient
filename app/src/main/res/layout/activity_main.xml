@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~ Created for MSc in Computer Science - Distributed Systems
+  ~ All right reserved except otherwise noted
+  -->
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="auebdreamteam.com.dssparkclient.MainActivity"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_behavior="auebdreamteam.com.dssparkclient.helpers.FixAppBarLayoutBehavior"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_marginTop="24dp"
+                android:layout_height="@dimen/toolbar_height"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:layout_gravity="center_horizontal"
+                app:tabPaddingStart="12dp"
+                app:tabPaddingEnd="12dp"
+                app:tabMinWidth="72dp"
+                app:tabMaxWidth="256dp"
+                app:tabMode="fixed"
+                app:tabGravity="fill"
+                app:tabPaddingBottom="2dp"
+                app:tabSelectedTextColor="@color/white"
+                app:tabIndicatorHeight="3dp"
+                app:tabTextAppearance="@style/TextNotCaps"
+                app:tabTextColor="@color/white_70"
+                android:visibility="gone"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:id="@+id/fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/toolbar_height"
+            tools:ignore="MergeRootFrame"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/common_full_open_on_phone"/>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

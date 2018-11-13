@@ -1,3 +1,9 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~ Created for MSc in Computer Science - Distributed Systems
+  ~ All right reserved except otherwise noted
+  -->
+
 <resources>
 
     <!-- Base application theme. -->
@@ -6,6 +12,27 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="material_drawer_background">#F9F9F9</item>
+        <item name="material_drawer_primary_text">#DE000000</item>
+        <item name="material_drawer_primary_icon">#FA000000</item>
+        <item name="material_drawer_secondary_text">#8A000000</item>
+        <item name="material_drawer_hint_text">#42000000</item>
+        <item name="material_drawer_divider">#1F000000</item>
+        <item name="material_drawer_selected">#E8E8E8</item>
+        <item name="material_drawer_selected_text">#2176C3</item>
+        <item name="material_drawer_header_selection_text">#FFF</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TextNotCaps" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@string/font_fontFamily_medium</item>
     </style>
 
 </resources>

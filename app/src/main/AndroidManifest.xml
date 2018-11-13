@@ -1,9 +1,35 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~ Created for MSc in Computer Science - Distributed Systems
+  ~ All right reserved except otherwise noted
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="auebdreamteam.com.ds_sparkclient">
+    package="auebdreamteam.com.dssparkclient">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"/>
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB9RgYvIq78a3bY_rm54qUcvnY-RCFD49M" />
+
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>

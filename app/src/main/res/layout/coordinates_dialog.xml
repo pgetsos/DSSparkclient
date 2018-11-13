@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018.
+  ~ Created for MSc in Computer Science - Distributed Systems
+  ~ All right reserved except otherwise noted
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/starting_lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/coordinates_starting_lat"
+        app:met_floatingLabel="highlight" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/starting_long"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/coordinates_starting_long"
+        app:met_floatingLabel="highlight" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/ending_lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/coordinates_ending_lat"
+        app:met_floatingLabel="highlight" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/ending_long"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/coordinates_ending_long"
+        app:met_floatingLabel="highlight" />
+
+</LinearLayout>

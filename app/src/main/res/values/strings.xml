@@ -1,3 +1,23 @@
+<!--
+  ~ Copyright (c) 2018.
+  ~ Created for MSc in Computer Science - Distributed Systems
+  ~ All right reserved except otherwise noted
+  -->
+
 <resources>
     <string name="app_name">DS-Spark client</string>
+    <string name="exit_text">Πατήστε ΠΙΣΩ ακόμα μια φορά για έξοδο</string>
+    <string name="ok_button">ΟΚ</string>
+    <string name="cancel_button">Ακυρωση</string>
+
+    <!-- Drawer categories -->
+    <string name="drawer_item_map">Χάρτης</string>
+    <string name="drawer_item_line">Γραμμή λεωφορείου</string>
+
+    <!-- Coordinates dialog -->
+    <string name="coordinates_starting_lat">Starting Lat</string>
+    <string name="coordinates_starting_long">Starting Long</string>
+    <string name="coordinates_ending_lat">Ending Lat</string>
+    <string name="coordinates_ending_long">Ending Long</string>
+
 </resources>
