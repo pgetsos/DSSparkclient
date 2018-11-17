@@ -95,24 +95,20 @@ public class MainActivity extends AppCompatActivity {
                 .withDisplayBelowStatusBar(true)
                 .withSliderBackgroundColorRes(drawerColor)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_map).withIcon(R.drawable.common_google_signin_btn_icon_dark).withIdentifier(1).withIconTintingEnabled(true),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_map).withIcon(R.drawable.ic_map_black_24dp).withIdentifier(1).withIconTintingEnabled(true),
                         //new SectionDrawerItem().withDivider(false).withName(R.string.drawer_item_categories),
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_line).withIcon(R.drawable.common_google_signin_btn_icon_dark).withIdentifier(2).withIconTintingEnabled(true)
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_line).withIcon(R.drawable.ic_directions_bus_black_24dp).withIdentifier(2).withIconTintingEnabled(true)
                 )
                 .withShowDrawerOnFirstLaunch(!BuildConfig.DEBUG)
                 .withSelectedItem(1)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-                    for (Fragment page : pages) {
-                        getFragmentManager().beginTransaction().remove(page).commit();
-                    }
+
                     drawerItemIdentifier = (int)drawerItem.getIdentifier();
                     switch (drawerItemIdentifier){
                         case 1:
                         	Fragment map = new MapFragment();
-                        	pages.add(map);
                             getFragmentManager().beginTransaction()
 									.add(R.id.fragment, map, "map")
-									.addToBackStack(null)
 									.commit();
                             break;
                         case 7:
@@ -125,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
 							Fragment map1 = new MapFragment();
 							getFragmentManager().beginTransaction()
 									.add(R.id.fragment, map1, "map")
-									.addToBackStack(null)
 									.commit();
                     }
                     lastPosition = drawerItemIdentifier;
