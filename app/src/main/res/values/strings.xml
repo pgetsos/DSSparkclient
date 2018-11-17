@@ -9,12 +9,14 @@
     <string name="exit_text">Πατήστε ΠΙΣΩ ακόμα μια φορά για έξοδο</string>
     <string name="ok_button">ΟΚ</string>
     <string name="cancel_button">Ακυρωση</string>
+    <string name="total_buses">Total buses: %s</string>
 
     <!-- Drawer categories -->
     <string name="drawer_item_map">Χάρτης</string>
     <string name="drawer_item_line">Γραμμή λεωφορείου</string>
 
     <!-- Coordinates dialog -->
+    <string name="coordinates_button">Manual\ncoordinates</string>
     <string name="coordinates_starting_lat">Starting Lat</string>
     <string name="coordinates_starting_long">Starting Long</string>
     <string name="coordinates_ending_lat">Ending Lat</string>

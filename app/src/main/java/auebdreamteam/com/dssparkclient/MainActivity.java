@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 				//.addToBackStack(null)
 				.commit();
 
-		openCoordinatesDialog();
         //binding.fab.setOnClickListener(view -> startActivity(new Intent(this, CreateVehicle.class)));
         initDrawer(savedInstanceState);
     }
@@ -137,15 +136,4 @@ public class MainActivity extends AppCompatActivity {
                 .withSavedInstance(savedInstanceState)
                 .build();
     }
-
-    private void openCoordinatesDialog() {
-		new MaterialDialog.Builder(this)
-						.title(R.string.coordinates_starting_lat)
-						.customView(R.layout.coordinates_dialog, true)
-						.positiveText(R.string.ok_button)
-						.negativeText(R.string.cancel_button)
-						//.onPositive(
-								//(dialog1, which) -> ())
-						.build().show();
-	}
 }
