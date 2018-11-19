@@ -5,6 +5,8 @@
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
+/.idea/sonarlint
+/.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /captures

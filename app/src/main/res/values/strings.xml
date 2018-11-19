@@ -22,4 +22,10 @@
     <string name="coordinates_ending_lat">Ending Lat</string>
     <string name="coordinates_ending_long">Ending Long</string>
 
+    <!-- Fragments -->
+    <string name="choose_bus_line">Bus line ID</string>
+    <string name="choose_bus_stop">Stop ID</string>
+    <string name="choose_date">Search date:</string>
+    <string name="input_is_required">Input is required!</string>
+
 </resources>

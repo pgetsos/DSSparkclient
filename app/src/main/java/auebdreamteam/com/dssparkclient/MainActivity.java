@@ -22,10 +22,12 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.orhanobut.hawk.Hawk;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import auebdreamteam.com.dssparkclient.databinding.ActivityMainBinding;
 import auebdreamteam.com.dssparkclient.helpers.FixAppBarLayoutBehavior;
+import auebdreamteam.com.dssparkclient.ui.DelayPerStopFragment;
 import auebdreamteam.com.dssparkclient.ui.MapFragment;
 
 
@@ -50,26 +52,16 @@ public class MainActivity extends AppCompatActivity {
         //binding.collapsingToolbar.setTitle(getString(R.string.toolbar_title));
         ((CoordinatorLayout.LayoutParams) binding.appbar.getLayoutParams()).setBehavior(new FixAppBarLayoutBehavior());
 
+        pages = new ArrayList<>(1);
+
 		Fragment map = new MapFragment();
+		pages.add(map);
 		getFragmentManager().beginTransaction()
 				.add(R.id.fragment, map, "map")
 				//.addToBackStack(null)
 				.commit();
 
-        //binding.fab.setOnClickListener(view -> startActivity(new Intent(this, CreateVehicle.class)));
         initDrawer(savedInstanceState);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-       /* if (Hawk.get(AboutPrefs.KEY_CHANGE, false)) {
-            Hawk.put(AboutPrefs.KEY_CHANGE, false);
-            for (Fragment page : pages) {
-                getSupportFragmentManager().beginTransaction().remove(page).commitNow();
-            }
-            this.recreate();
-        }*/
     }
 
     @Override
@@ -102,13 +94,23 @@ public class MainActivity extends AppCompatActivity {
                 .withShowDrawerOnFirstLaunch(!BuildConfig.DEBUG)
                 .withSelectedItem(1)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-
+					for (Fragment page : pages) {
+						getFragmentManager().beginTransaction().remove(page).commit();
+					}
                     drawerItemIdentifier = (int)drawerItem.getIdentifier();
                     switch (drawerItemIdentifier){
                         case 1:
                         	Fragment map = new MapFragment();
+                        	pages.add(map);
                             getFragmentManager().beginTransaction()
 									.add(R.id.fragment, map, "map")
+									.commit();
+                            break;
+                         case 2:
+                        	Fragment delayPerStop = new DelayPerStopFragment();
+                        	pages.add(delayPerStop);
+                            getFragmentManager().beginTransaction()
+									.add(R.id.fragment, delayPerStop, "delayPerStop")
 									.commit();
                             break;
                         case 7:
