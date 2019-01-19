@@ -22,6 +22,8 @@
     <string name="coordinates_ending_lat">Ending Lat</string>
     <string name="coordinates_ending_long">Ending Long</string>
 
+    <string name="ip_hint">Enter server\'s IP Address</string>
+
     <!-- Fragments -->
     <string name="choose_bus_line">Bus line ID</string>
     <string name="choose_bus_stop">Stop ID</string>
