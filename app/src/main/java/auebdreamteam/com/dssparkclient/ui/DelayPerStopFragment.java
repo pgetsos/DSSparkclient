@@ -20,16 +20,19 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import auebdreamteam.com.dssparkclient.R;
 import auebdreamteam.com.dssparkclient.databinding.FragmentBusDelayPerStopBinding;
+import auebdreamteam.com.dssparkclient.entities.BusesDelayQuery;
+import auebdreamteam.com.dssparkclient.helpers.DataSenderAsync;
 
 
-public class DelayPerStopFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
+public class DelayPerStopFragment extends Fragment implements BaseFragment, DatePickerDialog.OnDateSetListener {
 
     private FragmentBusDelayPerStopBinding binding;
 	private DatePickerDialog dpd;
-	private Date day = new Date();
+	private String formattedDate;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -38,7 +41,8 @@ public class DelayPerStopFragment extends Fragment implements DatePickerDialog.O
                 inflater, R.layout.fragment_bus_delay_per_stop, container, false);
 
         binding.dateButton.setOnClickListener(view -> dpd.show(getFragmentManager(), "DatePicker"));
-//        binding.searchButton.setOnClickListener(view -> sendSearchRequest());
+        binding.fab.setOnClickListener(view -> sendSearchRequest());
+        binding.serverInput.setText("192.168.1.2");
 
         initializeDatePicker();
 
@@ -48,9 +52,9 @@ public class DelayPerStopFragment extends Fragment implements DatePickerDialog.O
     private void initializeDatePicker() {
 		Calendar startOfData = Calendar.getInstance();
 		startOfData.set(2013, 0, 1);
-		day = startOfData.getTime();
-		String date = getFormattedDate(startOfData);
-		binding.dateButton.setText(date);
+		Date day = startOfData.getTime();
+		formattedDate = getFormattedDate(startOfData);
+		binding.dateButton.setText(formattedDate);
 
 		Calendar endOfData = Calendar.getInstance();
 		endOfData.set(2013, 0, 31);
@@ -65,6 +69,11 @@ public class DelayPerStopFragment extends Fragment implements DatePickerDialog.O
 	}
 
     private void sendSearchRequest() {
+        if (binding.serverInput.length() == 0) {
+            binding.serverInput.setError(getString(R.string.input_is_required));
+            binding.serverInput.requestFocus();
+            return;
+        }
         if (binding.busLineInput.length() == 0) {
             binding.busLineInput.setError(getString(R.string.input_is_required));
             binding.busLineInput.requestFocus();
@@ -76,19 +85,29 @@ public class DelayPerStopFragment extends Fragment implements DatePickerDialog.O
             return;
         }
 
+        String serverIP = binding.serverInput.getText().toString();
         String busLine = binding.busLineInput.getText().toString();
-        String busStop = binding.busStopInput.getText().toString();
+        int busStop = Integer.parseInt(binding.busStopInput.getText().toString());
+
+		BusesDelayQuery query = new BusesDelayQuery();
+
+		query.setDate(formattedDate);
+		query.setLineID(busLine);
+		query.setStopID(busStop);
+		query.setServerIP(serverIP);
+
+		DataSenderAsync async = new DataSenderAsync(this, getActivity());
+		async.execute(query);
+
     }
 
 	@Override
 	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
 		Calendar picked = new GregorianCalendar();
 		picked.set(year, monthOfYear, dayOfMonth);
-		day = picked.getTime();
-		String date = getFormattedDate(picked);
+		formattedDate = getFormattedDate(picked);
 
-		binding.dateButton.setText(date);
-
+		binding.dateButton.setText(formattedDate);
 	}
 
 	private String getFormattedDate(Calendar calendar) {
@@ -96,6 +115,16 @@ public class DelayPerStopFragment extends Fragment implements DatePickerDialog.O
 			return "-";
 		}
 		return calendar.get(Calendar.DAY_OF_MONTH)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.YEAR);
+	}
+
+	@Override
+	public void onResult(List<Object> results) {
+    	if (results == null) {
+    		return; //FIXME
+		}
+		for (Object result : results) {
+			//TODO
+		}
 	}
 
 }

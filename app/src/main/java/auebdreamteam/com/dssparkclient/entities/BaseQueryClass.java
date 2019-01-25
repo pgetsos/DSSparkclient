@@ -10,8 +10,9 @@ import java.io.Serializable;
 
 public abstract class BaseQueryClass implements Serializable {
 
-	String serverIP;
+	private static final long serialVersionUID = 12345678904L;
 
+	String serverIP;
 	public String getServerIP() {
 		return serverIP;
 	}

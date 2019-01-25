@@ -16,6 +16,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Base64;
 import java.util.List;
 
 import auebdreamteam.com.dssparkclient.entities.BaseQueryClass;
@@ -44,9 +45,12 @@ public class DataSenderAsync extends AsyncTask<BaseQueryClass, String, List<Obje
 				ObjectOutputStream out = new ObjectOutputStream(requestSocket.getOutputStream());
 				ObjectInputStream in = new ObjectInputStream(requestSocket.getInputStream())
 		) {
+			System.out.println("Connection established!");
 			out.writeObject(query[0]);
 			out.flush();
-
+			System.out.println("Item sent!");
+			if(true) //FIXME
+				return null;
 			Object obj = in.readObject();
 			if(obj instanceof List<?> && ((List) obj).get(0) != null) {
 				toReturn = (List<Object>) obj;
