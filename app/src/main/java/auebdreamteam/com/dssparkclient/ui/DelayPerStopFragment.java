@@ -25,6 +25,7 @@ import java.util.List;
 import auebdreamteam.com.dssparkclient.R;
 import auebdreamteam.com.dssparkclient.databinding.FragmentBusDelayPerStopBinding;
 import auebdreamteam.com.dssparkclient.entities.BusesDelayQuery;
+import auebdreamteam.com.dssparkclient.entities.MapQuery;
 import auebdreamteam.com.dssparkclient.helpers.DataSenderAsync;
 
 
@@ -95,9 +96,10 @@ public class DelayPerStopFragment extends Fragment implements BaseFragment, Date
 		query.setLineID(busLine);
 		query.setStopID(busStop);
 		query.setServerIP(serverIP);
-
+		MapQuery mq = new MapQuery();
+		mq.setServerIP(serverIP);
 		DataSenderAsync async = new DataSenderAsync(this, getActivity());
-		async.execute(query);
+		async.execute(mq);
 
     }
 

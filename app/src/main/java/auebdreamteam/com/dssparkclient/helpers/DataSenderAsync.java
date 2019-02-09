@@ -41,18 +41,18 @@ public class DataSenderAsync extends AsyncTask<BaseQueryClass, String, List<Obje
 		List<Object> toReturn = null;
 
 		try (
-				Socket requestSocket = new Socket(query[0].getServerIP(), 4321);
+				Socket requestSocket = new Socket(query[0].getServerIP(), 4322);
 				ObjectOutputStream out = new ObjectOutputStream(requestSocket.getOutputStream());
 				ObjectInputStream in = new ObjectInputStream(requestSocket.getInputStream())
 		) {
 			System.out.println("Connection established!");
 			out.writeObject(query[0]);
 			out.flush();
-			System.out.println("Item sent!");
-			if(true) //FIXME
-				return null;
+			System.err.println("Item sent!");
+
 			Object obj = in.readObject();
-			if(obj instanceof List<?> && ((List) obj).get(0) != null) {
+			System.err.println("Item received!");
+			if(obj instanceof List<?>) {
 				toReturn = (List<Object>) obj;
 				//fragment.onResult((List<Object>) in.readObject());
 			}

@@ -32,6 +32,8 @@ import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -201,18 +203,29 @@ public class MapFragment extends Fragment implements BaseFragment, OnMapReadyCal
     	googleMap.clear();
 
 		DataSenderAsync async = new DataSenderAsync(this, getActivity());
+		query.setServerIP(ipAddress);
 		async.execute(query);
 
 	}
 
 	@Override
 	public void onResult(List<Object> results) {
+		if (results == null) {
+			return; //FIXME
+		}
+		int counter = 0;
+		binding.totalBuses.setText(getString(R.string.total_buses, String.valueOf(results.size())));
+		Collections.shuffle(results);
 		for (Object result : results) {
 			MapPoint point = (MapPoint) result;
 			MarkerOptions markerOptions = new MarkerOptions();
 			LatLng latLng = new LatLng(point.getLatCoordinate(), point.getLongCoordinate());
 			markerOptions.position(latLng);
 			googleMap.addMarker(markerOptions);
+			counter++;
+			if (counter == 100){
+				break;
+			}
 		}
 	}
 }
