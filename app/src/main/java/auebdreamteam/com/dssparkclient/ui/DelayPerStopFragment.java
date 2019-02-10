@@ -96,10 +96,10 @@ public class DelayPerStopFragment extends Fragment implements BaseFragment, Date
 		query.setLineID(busLine);
 		query.setStopID(busStop);
 		query.setServerIP(serverIP);
-		MapQuery mq = new MapQuery();
-		mq.setServerIP(serverIP);
+
 		DataSenderAsync async = new DataSenderAsync(this, getActivity());
-		async.execute(mq);
+		async.execute(query);
+		binding.busDelayText.setText(getString(R.string.please_wait));
 
     }
 
@@ -116,7 +116,7 @@ public class DelayPerStopFragment extends Fragment implements BaseFragment, Date
 		if(calendar.getTimeInMillis() == 0) {
 			return "-";
 		}
-		return calendar.get(Calendar.DAY_OF_MONTH)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.YEAR);
+		return calendar.get(Calendar.YEAR)+"-"+String.format("%02d", (calendar.get(Calendar.MONTH)+1))+"-"+String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH));
 	}
 
 	@Override
@@ -125,8 +125,7 @@ public class DelayPerStopFragment extends Fragment implements BaseFragment, Date
     		return; //FIXME
 		}
 		for (Object result : results) {
-			//TODO
+			binding.busDelayText.setText((String) result);
 		}
 	}
-
 }

@@ -54,7 +54,6 @@ public class DataSenderAsync extends AsyncTask<BaseQueryClass, String, List<Obje
 			System.err.println("Item received!");
 			if(obj instanceof List<?>) {
 				toReturn = (List<Object>) obj;
-				//fragment.onResult((List<Object>) in.readObject());
 			}
 
 		} catch (UnknownHostException unknownHost) {

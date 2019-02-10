@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="@string/choose_bus_line"
+                android:hint="@string/ip_hint"
                 android:importantForAutofill="no"
                 tools:targetApi="o" />
         </android.support.design.widget.TextInputLayout>
@@ -81,6 +81,7 @@
                 android:textSize="16sp"
                 style="@style/Widget.AppCompat.Button.Colored"/>
         </LinearLayout>
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -88,5 +89,13 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
             android:src="@drawable/ic_search_white_24dp"/>
+
+        <TextView
+            android:id="@+id/bus_delay_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="20sp"/>
+
     </LinearLayout>
 </layout>

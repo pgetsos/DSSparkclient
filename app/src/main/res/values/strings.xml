@@ -29,5 +29,6 @@
     <string name="choose_bus_stop">Stop ID</string>
     <string name="choose_date">Search date:</string>
     <string name="input_is_required">Input is required!</string>
+    <string name="please_wait">Please wait...</string>
 
 </resources>
